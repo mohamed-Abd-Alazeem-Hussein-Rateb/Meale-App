@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "935431827512",
+    "project_id": "tesfood-app",
+    "storage_bucket": "tesfood-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935431827512:android:61175c3b1c6d93b7ad36cd",
+        "android_client_info": {
+          "package_name": "com.example.mealeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHt35GAHWYaEr1DEylUj8r96JaSYnzCok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
