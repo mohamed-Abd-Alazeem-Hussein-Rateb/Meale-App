@@ -34,6 +34,7 @@ final class SearchFoodError extends GetFoddCategoryState {
 
 
 
+
 final class RecommendationFoodLoading extends GetFoddCategoryState {}
 
 final class RecommendationFoodSuccess extends GetFoddCategoryState {

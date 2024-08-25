@@ -1,86 +1,86 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mealeapp/widgets/constant.dart';
+import 'package:mealeapp/widgets/custom_text_field.dart';
 
-class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  bool _isObscure = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  void _fetchUserData() {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      _nameController.text = user.displayName ?? 'No Name'; // اسم المستخدم من الـ Firebase
+      _emailController.text = user.email ?? 'No Email'; // البريد الإلكتروني من الـ Firebase
+      // هنا يمكن تخزين كلمة المرور في المتغير إذا كانت متوفرة
+      _passwordController.text = '********'; // هنا يمكن وضع كلمة مرور وهمية أو مشفرة
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
+        title: const Text('Profile'),
+        backgroundColor: KprimaryColor,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            
+            CustomTextField(
+              controller: _nameController,
+              labelText: 'Name',
+              obsertex: false,
+              prefixIcon: const Icon(Icons.person, color: Colors.black),
+              enabled: false, // تعطيل التعديل على الحقول
+            ),
+            const SizedBox(height: 20),
+            CustomTextField(
+              controller: _emailController,
+              labelText: 'Email',
+              obsertex: false,
+              prefixIcon: const Icon(Icons.email, color: Colors.black),
+              enabled: false, // تعطيل التعديل على الحقول
+            ),
+            const SizedBox(height: 20),
+            CustomTextField(
+              controller: _passwordController,
+              labelText: 'Password',
+              obsertex: _isObscure,
+              prefixIcon: const Icon(Icons.lock, color: Colors.black),
+              suffixIcon: InkWell(
+                onTap: () {
+                  setState(() {
+                    _isObscure = !_isObscure; // تغيير الحالة بين إظهار وإخفاء كلمة المرور
+                  });
+                },
+                child: Icon(
+                  _isObscure ? Icons.visibility : Icons.visibility_off, // تغيير الأيقونة حسب الحالة
+                  color: Colors.black,
+                ),
+              ),
+              enabled: false, // تعطيل التعديل على الحقول
+            ),
+          ],
         ),
       ),
-      body: SingleChildScrollView(
-  child: Padding(
-    padding: const EdgeInsets.all(10.0),
-    child: Column(
-      children: [
-        Card(
-          color: Color.fromARGB(255, 247, 246, 246),
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween, // توزيع العناصر بشكل متساوي
-              children: [
-                // الصورة
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(11),
-                  child: Image.network(
-                    'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-                    height: 90,
-                    width: 90,
-                    fit: BoxFit.cover, // تغيير fit لتجنب تمدد الصورة
-                  ),
-                ),
-                const SizedBox(width: 80), // المسافة بين الصورة والنص
-                // النص
-               const Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Meals',
-                        style: TextStyle(
-                          color: KprimaryColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        '10 Items',
-                        style: TextStyle(
-                          color: KprimaryColor,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // أيقونة الحذف
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.delete,
-                    color: KprimaryColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  ),
-)
     );
   }
 }

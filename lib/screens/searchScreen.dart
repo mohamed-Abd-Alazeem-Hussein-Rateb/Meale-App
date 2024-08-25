@@ -20,7 +20,7 @@ class SearchScreen extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: IconButton(
                 onPressed: () {
-                   cubit.clearSearch();
+                   cubit.foodSearch.clear();
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.arrow_back_ios_new_outlined,color: KprimaryColor,),
@@ -32,7 +32,7 @@ class SearchScreen extends StatelessWidget {
                 if (value.isNotEmpty) {
                   cubit.searchFood(value); // استدعاء دالة البحث
                 } else {
-                  cubit.clearSearch(); // مسح النتائج عند خلو النص
+                  cubit.foodSearch.clear(); // مسح النتائج عند خلو النص
                 }
               },
               decoration: InputDecoration(

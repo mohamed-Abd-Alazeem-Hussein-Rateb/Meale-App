@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mealeapp/screens/favorite_screen.dart';
 import 'package:mealeapp/widgets/constant.dart';
 import 'home_screen.dart';
-import 'favorite_screen.dart';
 import 'cart_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _pages = const [
     HomeScreen(),
-    FavoriteScreen(),
+    ProfileScreen(),
     CartScreen(),
   ];
 

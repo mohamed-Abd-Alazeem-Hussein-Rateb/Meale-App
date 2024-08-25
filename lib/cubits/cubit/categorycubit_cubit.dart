@@ -36,27 +36,5 @@ class CategorycubitCubit extends Cubit<CategorycubitState> {
 
 
 
-   List<FoodModle> foodSearch = [];
-  void searchFood(String query) async {
-    try {
-      emit(GetFoddCategoryLoading());
-      http.Response response = await http.get(Uri.parse('https://www.themealdb.com/api/json/v1/1/search.php?s=$query'));
-
-      var data = jsonDecode(response.body);
-
-      if (response.statusCode == 200 && data['meals'] != null) {
-        foodSearch.clear(); // Reset the list before adding new data
-        for (var element in data['meals']) {
-          foodSearch.add(FoodModle.fromJson(element));
-        }
-        emit(GetFoddCategorySuccess(food: foodSearch));
-      } else {
-        emit(GetFoddCategoryError(error: 'No results found for the query'));
-      }
-    } catch (e) {
-      print('Error: $e');
-      emit(GetFoddCategoryError(error: e.toString()));
-    }
-  }
-
+   
 }

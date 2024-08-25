@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mealeapp/cubits/cubit/categorycubit_cubit.dart';
 import 'package:mealeapp/screens/log_in_screen.dart';
 import 'package:mealeapp/screens/searchScreen.dart';
 import 'package:mealeapp/widgets/constant.dart';
@@ -59,7 +57,7 @@ class HomeScreen extends StatelessWidget {
 
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
+                MaterialPageRoute(builder: (context) =>const LoginScreen()),
               );
             
                 }, icon:const Icon(Icons.logout_outlined,color: KprimaryColor,))

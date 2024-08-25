@@ -3,40 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mealeapp/cubits/cubit/categorycubit_cubit.dart';
 import 'package:mealeapp/widgets/card_tab_item.dart';
 
-class MealsList extends StatefulWidget {
+class MealsList extends StatelessWidget {
   final String category;
 
   const MealsList({super.key, required this.category});
 
   @override
-  _MealsListState createState() => _MealsListState();
-}
-
-class _MealsListState extends State<MealsList> {
-  late CategorycubitCubit _cubit;
-
-  @override
-  void initState() {
-    super.initState();
-    _cubit = context.read<CategorycubitCubit>();
-    _cubit.getFoddCategory(category: widget.category);
-  }
-
-  @override
-  void didUpdateWidget(covariant MealsList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.category != widget.category) {
-      _cubit.getFoddCategory(category: widget.category);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // استخدام Cubit الموفر من MultiBlocProvider
+    context.read<CategorycubitCubit>().getFoddCategory(category: category);
     return BlocBuilder<CategorycubitCubit, CategorycubitState>(
       builder: (context, state) {
-        if (state is CategorycubitInitial) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state is GetFoddCategoryLoading) {
+        if (state is GetFoddCategoryLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is GetFoddCategorySuccess) {
           if (state.food.isEmpty) {

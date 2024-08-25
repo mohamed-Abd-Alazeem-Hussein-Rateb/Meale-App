@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child:const Text(
                       'Reset Password',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: KprimaryColor,
                         fontSize: 20,
                       ),
                     ),
@@ -274,10 +274,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                       },
                 child: Container(
-                  width: 300,
-                  height: 70,
+                   width: double.infinity,
+                  height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: KprimaryColor,
                     borderRadius: BorderRadius.circular(19),
                   ),
                   child: const Center(
@@ -323,10 +323,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const RegisterScreen()));
                 },
                 child: Container(
-                  width: 300,
-                  height: 70,
+                  width: double.infinity,
+                  height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: KprimaryColor,
                     borderRadius: BorderRadius.circular(19),
                   ),
                   child: const Center(
@@ -346,22 +346,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                 },
                 child: Container(
-                  width: 320,
-                  height: 70,
+                   width: double.infinity,
+                  height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: KprimaryColor,
                     borderRadius: BorderRadius.circular(19),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(26),
                         child: Image.asset(
-                          'assets/google-logo-with-3d-render-etched-glass-material-soft-glow-multicolor-sche_655090-3367562.jpg',
-                          height: 60,
-                          width: 60,
-                          fit: BoxFit.contain,
+                          'assets/google-icon-3d-render_68185-1080.avif',
+                          height: 50,
+                          width: 50,
+                          fit: BoxFit.fill,
                         ),
                       ),
                       const SizedBox(

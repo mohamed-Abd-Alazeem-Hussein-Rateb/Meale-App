@@ -54,7 +54,7 @@ bool _passwordsMatch() {
                  const Text(
                       'Hello to meale',
                       style: TextStyle(
-                          color: Colors.black,
+                          color:KprimaryColor,
                           fontSize: 17,
                           fontWeight: FontWeight.bold),
                     ),
@@ -163,6 +163,7 @@ bool _passwordsMatch() {
                             email: _emailController.text,
                             password: _passwordController.text,
                           );
+                              
                           isLoading = false;
                           setState(() {});
                           FirebaseAuth.instance.currentUser!.sendEmailVerification();
@@ -217,7 +218,7 @@ bool _passwordsMatch() {
                   width: 300,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: KprimaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: const Center(
@@ -243,7 +244,7 @@ bool _passwordsMatch() {
                     },
                     child: const Text(
                       'Sign in',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: KprimaryColor),
                     ),
                   ),
                 ],

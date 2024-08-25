@@ -4,8 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mealeapp/cubits/cubit/categorycubit_cubit.dart';
 import 'package:mealeapp/cubits/cubit/get_fodd_category_cubit.dart';
-import 'package:mealeapp/screens/home_screen.dart';
-import 'package:mealeapp/screens/log_in_screen.dart';
+import 'package:mealeapp/screens/layout_screen.dart';
 import 'package:mealeapp/screens/register_screen.dart';
 import 'firebase_options.dart';
 import 'package:mealeapp/widgets/bloc_observer.dart';
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home:(FirebaseAuth.instance.currentUser != null &&
               FirebaseAuth.instance.currentUser!.emailVerified)
-          ? const HomeScreen()
+          ?  MainScreen()
           :const RegisterScreen(),
       ),
     );
